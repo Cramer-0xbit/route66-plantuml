@@ -1,0 +1,32 @@
+@startuml Cerrar sesion
+actor Usuario
+boundary boundary
+control control
+participant "Usuario" as user
+Usuario->boundary: cerrarSesion()
+activate boundary
+boundary->control:cerrarSesion()
+activate control
+control->boundary:seguro()
+activate boundary
+alt Confirma
+    boundary->control:confirmocierre()
+    activate control
+    control->user:cerrarSesion()
+    activate user
+    control<<--user
+    deactivate user
+    boundary<<--control
+    deactivate control
+else no confirma
+    boundary->control:NoConfirmoCierre()
+    activate control
+    boundary<<--control
+    deactivate control
+    boundary-->>control
+    deactivate boundary
+    boundary<<--control
+    deactivate control
+    deactivate boundary
+end
+@enduml

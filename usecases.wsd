@@ -1,0 +1,23 @@
+@startuml use cases
+left to right direction
+:Usuario: as user
+:cliente: as client
+:Administrador: as admin
+user<|--client 
+user<|-- admin
+rectangle route66 {
+user --> (autenticar)
+user --> (registrarse)
+user --> (administrar perfil)
+user-->(consultar\r ranking)
+admin -->(administrar\r misiones)
+admin -->(administrar\r clientes)
+
+client -->(compartir progreso)
+client --> (administar avatar)
+client--> (consultar\r puntos)
+client --> (consultar\r insignias)
+client --> (consultar\r informacion)
+client --> (Canjear\r premios)
+}
+@enduml

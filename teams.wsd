@@ -1,0 +1,51 @@
+
+@startuml teams
+
+package teams <<Frame>> {
+ class FirebaseStorageFile {
+    - fileName : String = groups/{teamId}
+}
+
+ class Teams <<Collection>>
+ class Team <<Document>>{
+     - teamId: String
+     - /nombre: String
+     - visible:boolean
+     - /avatar:String
+     - admin: String    
+ }
+
+ class TeamMembers <<Collection>>
+ class TeamAchivements <<Collection>>
+ class TeamInsignias <<Collection>>
+ class TeamInsignia <<Document>>{
+     - insigniaId: int    
+ }
+ class TeamAchivement<<Document>>{
+     -type:int
+     -points:int
+     -mission:int
+     -timestamp:long
+ }
+ class TeamMember<<Document>>{
+     -{memeberId}:String
+     -begintime:LocalDate
+     -endtime:LocalDate
+ }
+ FirebaseStorageFile "0..1"<--"1"Team
+ Teams*-"0..*" Team
+ Team*--"0..1"TeamMembers
+ Team*--"0..1"TeamAchivements 
+ Team*--"0..1"TeamInsignias
+ TeamInsignias*--"0..1"TeamInsignia
+ TeamAchivements*--"0..1"TeamAchivement
+ TeamMembers*--"0..1"TeamMember
+
+}
+
+
+
+hide empty members   
+hide circle
+skinparam classAttributeIconSize 0
+@enduml

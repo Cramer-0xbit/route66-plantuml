@@ -1,0 +1,89 @@
+@startuml Gestionarcuenta
+actor Administrador
+boundary boundary
+control control
+collections Usuarios
+Administrador->boundary: gestionarCuentas()
+activate boundary
+boundary->control:Gestionarcuentas()
+activate control
+control->Usuarios:getCuentas()
+control<<--Usuarios
+deactivate Usuarios
+boundary<<--control
+deactivate control
+Administrador<<--boundary
+deactivate boundary
+
+Administrador->boundary: enviar(Datos)
+activate boundary
+boundary->control:Gestionarcuenta(datos)
+activate control
+control->Usuarios:modificar(Datos)
+control<<--Usuarios
+deactivate Usuarios
+boundary<<--control
+deactivate control
+Administrador<<--boundary
+deactivate boundary
+
+
+opt Crear cuenta
+    Administrador->boundary: CrearCuenta()
+    activate boundary
+    boundary->control:CrearCuenta()
+    activate control
+    boundary<-control:datos=obtenerDatos()
+    activate boundary
+    boundary-->>control
+    deactivate boundary
+    control->Usuarios:CrearCuenta()
+    activate Usuarios
+    control<<--Usuarios
+    deactivate Usuarios
+    boundary <<-- control
+    deactivate control
+    Administrador<<--boundary
+    deactivate boundary
+end
+
+
+opt consultar cuenta
+    Administrador->boundary: conusltarCuenta(cuenta)
+    activate boundary
+    boundary->control:conusltarCuenta(cuenta)
+    activate control
+    control->Usuarios:datos=ConsultarCuenta(cuenta)
+    activate Usuarios
+    control<<--Usuarios
+    deactivate Usuarios
+    boundary <- control:mostarDatos(datos)
+    activate boundary
+    boundary-->>control
+    deactivate boundary
+    deactivate control
+    deactivate boundary
+end
+
+
+opt eliminar Cuenta
+    Administrador->boundary: EliminarCuenta(cuenta)
+    activate boundary
+    boundary->control:EliminarCuenta(cuenta)
+    activate control
+    boundary<-control:ConfirmarEliminar()
+    activate boundary
+    boundary-->>control
+    deactivate boundary
+    control->Usuarios:Eliminar(cuenta)
+    activate Usuarios
+    control<<--Usuarios
+    deactivate Usuarios
+    boundary <<-- control
+    deactivate control
+    Administrador<<--boundary
+    deactivate boundary
+end
+
+
+@enduml

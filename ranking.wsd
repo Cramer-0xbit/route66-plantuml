@@ -1,0 +1,19 @@
+@startuml
+actor Usuario
+boundary boundary
+control control
+collections Users
+participant "Usuario" as user
+
+Usuario->boundary:GetRanking()
+boundary->control:GetRanking()
+control->Users:GetRanking()
+loop por cada ususario
+    Users-->user:getPuntos()
+    activate user
+    Users<<--user
+    deactivate user
+end
+Users->Users:ShortPuntos()
+control<<--Users
+@enduml

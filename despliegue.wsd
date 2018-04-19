@@ -1,0 +1,17 @@
+@startuml
+node "Ordenador" as Ordenador <<Client Device>>{
+    component "navegador Web"  as browser   
+}
+
+
+node "Servidor UNIX" as Servidor  <<Device>>{
+    component "Servidor Web"{
+        component "Route66" as app
+    }
+}
+cloud internet{
+database "firebase" as firebase 
+}
+browser--app
+app--firebase
+@enduml

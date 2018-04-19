@@ -1,0 +1,72 @@
+@startuml users
+package users <<Frame>> {
+ class FirebaseStorageFile <<FirebaseStorage>>{
+- fileName : String = avatares/{userId}
+}
+    class FirebaseUser <<FirebaseAuthentication>>{
+        - userId : String
+        - email : String
+        - visibleName : String 
+    }
+    class FirebaseConnection <<FirebaseAuthentication>>
+    class Google <<FirebaseAuthentication>>
+    class EmailPassword <<FirebaseAuthentication>>
+
+ class Users <<Collection>>
+ 
+ class User <<Document>>{
+    - <<Key>>/userid: String
+    - nombre: String
+    - fechanacimiento:LocalDate
+    - restaurantefavorito:int
+    - correoElectronico: String  
+    - genre: String
+    - puntos: long
+    - level: int
+    - rol: String 
+ }
+ 
+
+together {
+
+ class UserInsignias <<Collection>>
+ class UserAchivements <<Collection>>
+ class UserPrizes <<Collection>>
+ class UserInsignia <<Document>>{
+     - insigniaId: String    
+ }
+ class UserAchivement<<Document>>{
+     -type:int
+     -points:int
+     -expense:float
+     -mission:int
+     -timestamp:long
+ }
+ class UserPrize<<Document>>{
+     -prizeid:String
+     -begintime:LocalDate
+     -endtime:LocalDate
+}
+}
+
+
+ User*--"0..1"UserAchivements
+ User*--"0..1"UserInsignias 
+ User*--"0..1"UserPrizes
+ UserAchivements*--"0..1"UserAchivement
+ UserInsignias*--"0..1"UserInsignia
+ UserPrizes*--"0..1"UserPrize
+FirebaseUser*-"1..2"FirebaseConnection
+FirebaseUser <-- User
+FirebaseStorageFile"0..1"<--"1"User
+Users*-"0..*" User
+
+FirebaseConnection<|--EmailPassword
+FirebaseConnection<|--Google
+}
+/'Configuraciones'/
+
+hide empty members   
+hide circle
+skinparam classAttributeIconSize 0
+@enduml

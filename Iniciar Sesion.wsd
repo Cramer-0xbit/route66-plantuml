@@ -1,0 +1,29 @@
+@startuml Iniciar sesion
+actor Usuario
+boundary boundary
+control control
+participant "Usuario" as user
+collections Usuarios
+Usuario->boundary: IniciarSesion(usuario,contraseña)
+activate boundary
+boundary->control:IniciarSesion(usuario,contraseña)
+activate control
+control->Usuarios:Comprobar(usuario,contraseña):usuario
+activate Usuarios
+control<<--Usuarios
+alt Datos incorrectos
+    boundary<-control:datosIncorrectos()
+    activate boundary
+    deactivate boundary
+    else Datos correctos
+    boundary->user:IniciarUsuario()
+    activate user
+    control<<--user 
+    deactivate user
+    deactivate control
+    boundary<-control
+    activate boundary
+    deactivate boundary
+    deactivate boundary
+end
+@enduml
