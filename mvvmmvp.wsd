@@ -1,0 +1,9 @@
+@startuml
+class "modelo" as model
+class "vista" as view 
+
+
+hide empty members   
+hide circle
+skinparam classAttributeIconSize 0
+@enduml
