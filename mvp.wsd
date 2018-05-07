@@ -1,12 +1,12 @@
 @startuml
 class "Modelo" as model
 class "Vista" as view 
-class "Modelo de Vista" as view_model
+class "Presentador" as view_model
 
 view-right->view_model:envia\r llamadas
-view"1..*"<.left."1"view_model:activa\r eventos
+view"1"<-left-"1"view_model:actualiza
 view_model-right->model:manipula
-view_model"1"<.left."1"model:activa\r eventos
+view_model"1"<-left-"1"model:activa\r eventos
 
 hide empty members   
 hide circle
