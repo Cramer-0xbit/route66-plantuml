@@ -6,18 +6,35 @@ left to right direction
 user<|--client 
 user<|-- admin
 rectangle route66 {
+user --> (administrar perfil)
 user --> (autenticar)
 user --> (registrarse)
-user --> (administrar perfil)
 user-->(consultar\r ranking)
+
 admin -->(administrar\r misiones)
 admin -->(administrar\r clientes)
+admin -->(administrar\r premios)
+admin -->(administrar\r logros)
+admin -->(administrar\r insignias)
 
-client -->(compartir progreso)
-client --> (administar avatar)
+
 client--> (consultar\r puntos)
+client--> (consultar\r nivel)
 client --> (consultar\r insignias)
-client --> (consultar\r informacion)
-client --> (Canjear\r premios)
+client --> (consultar\r premios)
+client --> (invitar a\r equipos)
+client --> (administar\r equipos)
+
+
+
+(administar\r equipos) ..> (cambiar imagen): include
+(administrar perfil)..> (cambiar imagen): include
+(administrar\r misiones)..> (cambiar imagen): include
+(administrar\r clientes)..> (cambiar imagen): include
+(administrar\r premios)..> (cambiar imagen): include
+(administrar\r logros)..> (cambiar imagen): include
+(administrar\r insignias)..> (cambiar imagen): include
+
+
 }
 @enduml

@@ -1,13 +1,13 @@
-@startuml GestionarCuenta
-actor "Administrador" as Administrador 
+@startuml Administar Logros
+actor "Client" as Administrador 
 boundary boundary
 control control
 collections Firestore as Usuarios 
-Administrador->boundary: gestionarCuentas()
+Administrador->boundary: gestionarLogros()
 activate boundary
-boundary->control:GestionarCuentas()
+boundary->control:GestionarLogros()
 activate control
-control->Usuarios:getCuentas()
+control->Usuarios:getLogros()
 control<<--Usuarios
 deactivate Usuarios
 boundary<<--control
@@ -17,7 +17,7 @@ deactivate boundary
 
 Administrador->boundary: enviar(Datos)
 activate boundary
-boundary->control:GestionarCuenta(datos)
+boundary->control:Gestiona(datos)
 activate control
 control->Usuarios:modificar(Datos)
 control<<--Usuarios
@@ -28,16 +28,16 @@ Administrador<<--boundary
 deactivate boundary
 
 
-opt Crear Cuenta
-    Administrador->boundary: CrearCuenta()
+opt Crear Logro
+    Administrador->boundary: CrearLogro()
     activate boundary
-    boundary->control:CrearCuenta()
+    boundary->control:CrearLogro()
     activate control
     boundary<-control:datos=obtenerDatos()
     activate boundary
     boundary-->>control
     deactivate boundary
-    control->Usuarios:CrearCuenta()
+    control->Usuarios:CrearLogro()
     activate Usuarios
     control<<--Usuarios
     deactivate Usuarios
@@ -48,12 +48,12 @@ opt Crear Cuenta
 end
 
 
-opt consultar Cuenta
-    Administrador->boundary: conusltarCuenta(Cuenta)
+opt consultar Logro
+    Administrador->boundary: conusltarLogro(Logro)
     activate boundary
-    boundary->control:conusltarCuenta(Cuenta)
+    boundary->control:conusltarLogro(Logro)
     activate control
-    control->Usuarios:datos=ConsultarCuenta(Cuenta)
+    control->Usuarios:datos=ConsultarLogro(Logro)
     activate Usuarios
     control<<--Usuarios
     deactivate Usuarios
@@ -66,16 +66,16 @@ opt consultar Cuenta
 end
 
 
-opt eliminar Cuenta
-    Administrador->boundary: EliminarCuenta(Cuenta)
+opt eliminar Logro
+    Administrador->boundary: EliminarLogro(Logro)
     activate boundary
-    boundary->control:EliminarCuenta(Cuenta)
+    boundary->control:EliminarLogro(Logro)
     activate control
     boundary<-control:ConfirmarEliminar()
     activate boundary
     boundary-->>control
     deactivate boundary
-    control->Usuarios:Eliminar(Cuenta)
+    control->Usuarios:Eliminar(Logro)
     activate Usuarios
     control<<--Usuarios
     deactivate Usuarios

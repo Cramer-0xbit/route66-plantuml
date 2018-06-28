@@ -1,0 +1,34 @@
+
+@startuml Dommain model
+package Missions <<Frame>> {
+Class "usuario" as User {
+  - name :string  
+  - avatar :String
+  - rol :String
+  - password :String
+}
+class Achievement
+Class Prize as "premio"
+Class Insignia 
+class Mission as "mision"
+class Level as "nivel"
+class Team{
+  - name :string  
+  - avatar :String
+  - admin: String
+}
+
+
+User"1..*" -right--* "0..*" Team:Pertenece
+Mission"1..*"-down-*"1"Level
+User"1" o-- "0..*" Achievement
+User"1" o-- "0..*" Prize
+User"1" o-- "0..*" Insignia
+User->Level:juega
+Team"1" o-- "0..*" Achievement
+Team"1" o-- "0..*" Insignia
+}
+hide empty members   
+hide circle
+skinparam classAttributeIconSize 0
+@enduml

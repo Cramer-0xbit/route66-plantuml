@@ -1,0 +1,22 @@
+@startuml Crear cuenta
+actor "User" as Administrador
+boundary boundary
+control control
+collections Firebase as Usuarios 
+    Administrador->boundary: CrearCuenta()
+    activate boundary
+    boundary->control:CrearCuenta()
+    activate control
+    boundary<-control:datos=obtenerDatos()
+    activate boundary
+    boundary-->>control
+    deactivate boundary
+    control->Usuarios:CrearCuenta()
+    activate Usuarios
+    control<<--Usuarios
+    deactivate Usuarios
+    boundary <<-- control
+    deactivate control
+    Administrador<<--boundary
+    deactivate boundary
+@enduml

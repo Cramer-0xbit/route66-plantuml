@@ -1,5 +1,5 @@
-@startuml GestionarCuenta
-actor "Administrador" as Administrador 
+@startuml Administrar perfil
+actor "User" as Administrador
 boundary boundary
 control control
 collections Firestore as Usuarios 
@@ -7,7 +7,7 @@ Administrador->boundary: gestionarCuentas()
 activate boundary
 boundary->control:GestionarCuentas()
 activate control
-control->Usuarios:getCuentas()
+control->Usuarios:getCuenta()
 control<<--Usuarios
 deactivate Usuarios
 boundary<<--control
@@ -17,7 +17,7 @@ deactivate boundary
 
 Administrador->boundary: enviar(Datos)
 activate boundary
-boundary->control:GestionarCuenta(datos)
+boundary->control:Gestionarcuenta(datos)
 activate control
 control->Usuarios:modificar(Datos)
 control<<--Usuarios
@@ -27,33 +27,12 @@ deactivate control
 Administrador<<--boundary
 deactivate boundary
 
-
-opt Crear Cuenta
-    Administrador->boundary: CrearCuenta()
+opt consultar cuenta
+    Administrador->boundary: conusltarCuenta(cuenta)
     activate boundary
-    boundary->control:CrearCuenta()
+    boundary->control:conusltarCuenta(cuenta)
     activate control
-    boundary<-control:datos=obtenerDatos()
-    activate boundary
-    boundary-->>control
-    deactivate boundary
-    control->Usuarios:CrearCuenta()
-    activate Usuarios
-    control<<--Usuarios
-    deactivate Usuarios
-    boundary <<-- control
-    deactivate control
-    Administrador<<--boundary
-    deactivate boundary
-end
-
-
-opt consultar Cuenta
-    Administrador->boundary: conusltarCuenta(Cuenta)
-    activate boundary
-    boundary->control:conusltarCuenta(Cuenta)
-    activate control
-    control->Usuarios:datos=ConsultarCuenta(Cuenta)
+    control->Usuarios:datos=ConsultarCuenta(cuenta)
     activate Usuarios
     control<<--Usuarios
     deactivate Usuarios
@@ -67,15 +46,15 @@ end
 
 
 opt eliminar Cuenta
-    Administrador->boundary: EliminarCuenta(Cuenta)
+    Administrador->boundary: EliminarCuenta(cuenta)
     activate boundary
-    boundary->control:EliminarCuenta(Cuenta)
+    boundary->control:EliminarCuenta(cuenta)
     activate control
     boundary<-control:ConfirmarEliminar()
     activate boundary
     boundary-->>control
     deactivate boundary
-    control->Usuarios:Eliminar(Cuenta)
+    control->Usuarios:Eliminar(cuenta)
     activate Usuarios
     control<<--Usuarios
     deactivate Usuarios

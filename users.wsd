@@ -1,7 +1,7 @@
 @startuml users
 package users <<Frame>> {
  class FirebaseStorageFile <<FirebaseStorage>>{
-- fileName : String = avatares/{userId}
+- fileName : String = {avatarRef}
 }
     class FirebaseUser <<FirebaseAuthentication>>{
         - userId : String
@@ -18,9 +18,7 @@ package users <<Frame>> {
     - <<Key>>/userid: String
     - nombre: String
     - fechanacimiento:LocalDate
-    - restaurantefavorito:int
     - correoElectronico: String  
-    - genre: String
     - puntos: long
     - level: int
     - rol: String 
@@ -28,34 +26,39 @@ package users <<Frame>> {
  
 
 together {
-
+ class UserMissions <<Collection>>
  class UserInsignias <<Collection>>
  class UserAchivements <<Collection>>
  class UserPrizes <<Collection>>
  class UserInsignia <<Document>>{
-     - insigniaId: String    
+      -id:String
+     -oid:String
  }
  class UserAchivement<<Document>>{
-     -type:int
-     -points:int
-     -expense:float
-     -mission:int
-     -timestamp:long
+      -id:String
+     -oid:String
  }
  class UserPrize<<Document>>{
-     -prizeid:String
-     -begintime:LocalDate
-     -endtime:LocalDate
+     -id:String
+     -oid:String
+}
+ class UserMission <<Document>>{
+     -id:String
+     -oid:String
+     -done:boolean
+     -points: int
 }
 }
 
 
+ User*--"0..1"UserMissions
  User*--"0..1"UserAchivements
  User*--"0..1"UserInsignias 
  User*--"0..1"UserPrizes
- UserAchivements*--"0..1"UserAchivement
- UserInsignias*--"0..1"UserInsignia
- UserPrizes*--"0..1"UserPrize
+UserMissions*--"0..1"UserMission
+UserAchivements*--"0..1"UserAchivement
+UserInsignias*--"0..1"UserInsignia
+UserPrizes*--"0..1"UserPrize
 FirebaseUser*-"1..2"FirebaseConnection
 FirebaseUser <-- User
 FirebaseStorageFile"0..1"<--"1"User

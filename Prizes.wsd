@@ -1,0 +1,28 @@
+
+@startuml Prizes
+
+package Prizes <<Frame>> {
+ class FirebaseStorageFile {
+    - fileName : String = {avatarRef}
+}
+
+ class Prizes <<Collection>>
+ class Prize <<Document>>{
+     - id: String
+     - /name: String
+     - description:String
+     - /avatar:String
+     - /avatarRef: String    
+ }
+
+
+ FirebaseStorageFile "0..1"<--"1"Prize
+ Prizes*-"0..*" Prize
+
+
+}
+
+hide empty members   
+hide circle
+skinparam classAttributeIconSize 0
+@enduml

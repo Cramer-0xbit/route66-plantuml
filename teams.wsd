@@ -3,34 +3,33 @@
 
 package teams <<Frame>> {
  class FirebaseStorageFile {
-    - fileName : String = groups/{teamId}
+    - fileName : String = {avatarRef}
 }
 
  class Teams <<Collection>>
  class Team <<Document>>{
-     - teamId: String
+     - Id: String
+     - name: String
      - /nombre: String
-     - visible:boolean
      - /avatar:String
-     - admin: String    
+     - /avatarRef:String
+     - admin: String
+
  }
 
  class TeamMembers <<Collection>>
  class TeamAchivements <<Collection>>
  class TeamInsignias <<Collection>>
  class TeamInsignia <<Document>>{
-     - insigniaId: int    
+     - id:string
+     - oid: int    
  }
  class TeamAchivement<<Document>>{
-     -type:int
-     -points:int
-     -mission:int
-     -timestamp:long
+     - id:string
+     - oid: String
  }
  class TeamMember<<Document>>{
-     -{memeberId}:String
-     -begintime:LocalDate
-     -endtime:LocalDate
+     - id:String
  }
  FirebaseStorageFile "0..1"<--"1"Team
  Teams*-"0..*" Team

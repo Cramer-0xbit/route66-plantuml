@@ -1,0 +1,38 @@
+
+@startuml Missions
+
+package Missions <<Frame>> {
+ class FirebaseStorageFile {
+    - fileName : String = groups/{teamId}
+}
+
+
+class Levels <<Collection>>
+ class Level <<Document>>{
+     - id: String
+     - name: String
+     - level: int
+     - /avatar:String
+     - /avatarRef: String    
+ }
+
+ class Missions <<Collection>>
+ class Mission <<Document>>{
+     - id: String
+     - name: String
+     - /avatar:String
+     - /avatarRef: String    
+ }
+
+
+ FirebaseStorageFile "0..1"<--"1"Mission
+ FirebaseStorageFile "0..1"<--"1"Level
+Levels"1"*--"0..*" Level
+ Missions"1"*-"0..*" Mission
+Level"1"*-down-"1" Missions
+}
+
+hide empty members   
+hide circle
+skinparam classAttributeIconSize 0
+@enduml

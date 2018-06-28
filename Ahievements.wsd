@@ -1,0 +1,27 @@
+
+@startuml Achievements
+
+package Achievements <<Frame>> {
+ class FirebaseStorageFile {
+    - fileName : String = groups/{teamId}
+}
+
+ class Achievements <<Collection>>
+ class Achievement <<Document>>{
+     - id: String
+     - /nombre: String
+     - /avatar:String
+     - /avatarRef: String    
+ }
+
+
+ FirebaseStorageFile "0..1"<--"1"Achievement
+ Achievements*-"0..*" Achievement
+
+
+}
+
+hide empty members   
+hide circle
+skinparam classAttributeIconSize 0
+@enduml

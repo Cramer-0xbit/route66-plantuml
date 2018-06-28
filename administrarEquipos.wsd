@@ -1,13 +1,13 @@
-@startuml GestionarCuenta
-actor "Administrador" as Administrador 
+@startuml Administrar Equipos 
+actor "Cliente" as Administrador 
 boundary boundary
 control control
 collections Firestore as Usuarios 
-Administrador->boundary: gestionarCuentas()
+Administrador->boundary: gestionarEquipos()
 activate boundary
-boundary->control:GestionarCuentas()
+boundary->control:GestionarEquipos()
 activate control
-control->Usuarios:getCuentas()
+control->Usuarios:getEquipos()
 control<<--Usuarios
 deactivate Usuarios
 boundary<<--control
@@ -17,7 +17,7 @@ deactivate boundary
 
 Administrador->boundary: enviar(Datos)
 activate boundary
-boundary->control:GestionarCuenta(datos)
+boundary->control:Gestiona(datos)
 activate control
 control->Usuarios:modificar(Datos)
 control<<--Usuarios
@@ -28,16 +28,16 @@ Administrador<<--boundary
 deactivate boundary
 
 
-opt Crear Cuenta
-    Administrador->boundary: CrearCuenta()
+opt Crear Equipo
+    Administrador->boundary: CrearEquipo()
     activate boundary
-    boundary->control:CrearCuenta()
+    boundary->control:CrearEquipo()
     activate control
     boundary<-control:datos=obtenerDatos()
     activate boundary
     boundary-->>control
     deactivate boundary
-    control->Usuarios:CrearCuenta()
+    control->Usuarios:CrearEquipo()
     activate Usuarios
     control<<--Usuarios
     deactivate Usuarios
@@ -48,12 +48,12 @@ opt Crear Cuenta
 end
 
 
-opt consultar Cuenta
-    Administrador->boundary: conusltarCuenta(Cuenta)
+opt consultar Equipo
+    Administrador->boundary: conusltarEquipo(Equipo)
     activate boundary
-    boundary->control:conusltarCuenta(Cuenta)
+    boundary->control:conusltarEquipo(Equipo)
     activate control
-    control->Usuarios:datos=ConsultarCuenta(Cuenta)
+    control->Usuarios:datos=ConsultarEquipo(Equipo)
     activate Usuarios
     control<<--Usuarios
     deactivate Usuarios
@@ -66,16 +66,16 @@ opt consultar Cuenta
 end
 
 
-opt eliminar Cuenta
-    Administrador->boundary: EliminarCuenta(Cuenta)
+opt eliminar Equipo
+    Administrador->boundary: EliminarEquipo(Equipo)
     activate boundary
-    boundary->control:EliminarCuenta(Cuenta)
+    boundary->control:EliminarEquipo(Equipo)
     activate control
     boundary<-control:ConfirmarEliminar()
     activate boundary
     boundary-->>control
     deactivate boundary
-    control->Usuarios:Eliminar(Cuenta)
+    control->Usuarios:Eliminar(Equipo)
     activate Usuarios
     control<<--Usuarios
     deactivate Usuarios
