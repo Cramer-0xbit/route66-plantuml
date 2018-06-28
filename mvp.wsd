@@ -1,0 +1,14 @@
+@startuml
+class "Modelo" as model
+class "Vista" as view 
+class "Presentador" as view_model
+
+view-right->view_model:envia\r llamadas
+view"1"<-left-"1"view_model:actualiza
+view_model-right->model:manipula
+view_model"1"<-left-"1"model:activa\r eventos
+
+hide empty members   
+hide circle
+skinparam classAttributeIconSize 0
+@enduml
