@@ -2,7 +2,7 @@
 actor "User" as Administrador
 boundary boundary
 control control
-collections Firebase as Usuarios 
+collections Usuarios as Usuarios 
     Administrador->boundary: CrearCuenta()
     activate boundary
     boundary->control:CrearCuenta()

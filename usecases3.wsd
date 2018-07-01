@@ -5,39 +5,8 @@ skinparam packageStyle rectangle
 :cliente: as client
 :Administrador: as admin
 user<|--client 
-user<|-- admin
+user<|- admin
 rectangle route66 {
-user --> (Iniciar sesión)
-user --> (Cerrar sesión)
-user --> (registrarse)
-user-->(Mostrar ranking)
-user --> (modificar perfil)
-
-
-
-admin -->(editar usuario)
-admin -->(Crear Nivel)
-admin -->(Editar Nivel)
-admin -->(Eliminar Nivel)
-admin -->(Crear misión)
-admin -->(Editar misión)
-admin -->(Eliminar misión)
-
-admin -->(Crear Logro)
-admin -->(Editar Logro)
-admin -->(Eliminar Logro)
-
-
-admin -->(Crear Insignia)
-admin -->(Editar Insignia)
-admin -->(Eliminar Insignia)
-
-admin -->(Crear Premio)
-admin -->(Editar Premio)
-admin -->(Eliminar Premio)
-
-
-
 client --> (consultar equipo)
 client --> (crear equipo)
 client --> (editar equipo)

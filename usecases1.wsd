@@ -1,0 +1,16 @@
+
+@startuml use cases
+left to right direction
+skinparam packageStyle rectangle
+:Usuario: as user
+:cliente: as client
+:Administrador: as admin
+user<|--client 
+user<|-- admin
+rectangle route66 {
+user --> (Iniciar sesión)
+user --> (Cerrar sesión)
+user --> (registrarse)
+user --> (Mostrar ranking)
+user --> (modificar perfil)
+@enduml

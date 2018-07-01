@@ -2,7 +2,7 @@
 actor "Administrador" as Administrador 
 boundary boundary
 control control
-collections Firestore as Usuarios 
+collections Usuarios as Usuarios 
 Administrador->boundary: gestionarCuentas()
 activate boundary
 boundary->control:GestionarCuentas()
