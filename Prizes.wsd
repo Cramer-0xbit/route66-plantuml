@@ -14,12 +14,8 @@ package Prizes <<Frame>> {
      - /avatar:String
      - /avatarRef: String    
  }
-
-
- FirebaseStorageFile "0..1"<--"1"Prize
- Prizes*-"0..*" Prize
-
-
+ FirebaseStorageFile "0..1"<--Prize
+ Prizes*-up- Prize
 }
 
 hide empty members   

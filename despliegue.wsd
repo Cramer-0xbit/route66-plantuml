@@ -9,8 +9,12 @@ node "Servidor UNIX" as Servidor  <<Device>>{
     }
 }
 cloud internet{
-database "firebase" as firebase 
+database "Firebase" as firebase {
+        component "Firestore" as firesotre
+        component "Firebase Storage" as storage
+        component "Firebase auth" as auth
+    }
 }
-browser--app
-app--firebase
+browser-down-app
+app-down-firebase
 @enduml

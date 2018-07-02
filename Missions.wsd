@@ -3,7 +3,7 @@
 
 package Missions <<Frame>> {
  class FirebaseStorageFile {
-    - fileName : String = groups/{teamId}
+    - fileName : String = {avatarRef}
 }
 
 
@@ -25,11 +25,11 @@ class Levels <<Collection>>
  }
 
 
- FirebaseStorageFile "0..1"<--"1"Mission
- FirebaseStorageFile "0..1"<--"1"Level
-Levels"1"*--"0..*" Level
- Missions"1"*-"0..*" Mission
-Level"1"*-down-"1" Missions
+ FirebaseStorageFile "0..1"<-up-Mission
+ FirebaseStorageFile "0..1"<-up-Level
+Levels*-- Level
+ Missions*-left- Mission
+Level"1"*-down-"0..1" Missions
 }
 
 hide empty members   

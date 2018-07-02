@@ -16,7 +16,7 @@ package Insignias <<Frame>> {
 
 
  FirebaseStorageFile "0..1"<--"1"Insignias
- Insignias*-"0..*" Insignia
+ Insignias*--"0..*" Insignia
 }
 
 hide empty members   

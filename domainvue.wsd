@@ -1,0 +1,43 @@
+
+@startuml teams
+
+package pkj <<Frame>> {
+  class index
+  class store <<Vuex>>
+  package Firebase #ff9801{
+    class  Firebase.Firestore
+    class  Firebase.Auth
+    class  Firebase.Storage
+    }
+
+  package components #41b883{
+    class lista
+    class helloworld
+    class listausuarios
+    class listapremios
+    class listaInsignias
+    class EquiposUsuario
+    class EquiposUsuario
+    class Canvasmap
+
+    }
+  package store #41b883{
+    class  store.User
+  }  
+  package router #41b883{
+    class  router.Index
+  }
+  index -right-> router.Index
+  router -right-->components
+  router.Index -down-> store
+  components -down-> store
+  components ---> Firebase.Firestore
+  components ---> Firebase.Storage 
+  store ---> Firebase.Auth
+  Canvasmap--*helloworld
+  }
+
+hide empty members   
+hide circle
+skinparam classAttributeIconSize 0
+@enduml
