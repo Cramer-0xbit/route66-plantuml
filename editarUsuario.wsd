@@ -1,0 +1,28 @@
+@startuml Editar usuario
+actor "Administrador" as Administrador
+boundary boundary
+control control
+collections Usuarios as Usuarios 
+participant "user:Usuario" as user
+Administrador->boundary: AdministrarCuentas()
+activate boundary
+boundary->control
+activate control
+control->Usuarios
+activate Usuarios
+control<<--Usuarios
+deactivate Usuarios
+boundary<<--control
+deactivate control
+
+Administrador->boundary: editarcuenta(user,datos)
+boundary->control :editarcuenta(user,datos)
+activate control
+control->user:setUser(datos)
+activate user
+control<<--user
+deactivate user
+boundary<<--control
+deactivate control
+deactivate boundary
+@enduml

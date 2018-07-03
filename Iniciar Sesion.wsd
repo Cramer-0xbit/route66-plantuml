@@ -11,6 +11,7 @@ activate control
 control->Usuarios:Comprobar(usuario,contraseña):usuario
 activate Usuarios
 control<<--Usuarios
+deactivate Usuarios
 alt Datos incorrectos
     boundary<-control:datosIncorrectos()
     activate boundary

@@ -2,12 +2,18 @@
 actor "User" as Administrador
 boundary boundary
 control control
-collections Firestore as Usuarios 
+collections Usuarios as Usuarios 
+participant "Usuario" as user
 Administrador->boundary: gestionarCuentas()
 activate boundary
 boundary->control:GestionarCuentas()
 activate control
 control->Usuarios:getCuenta()
+activate Usuarios
+Usuarios->user:getCuenta()
+activate user
+Usuarios<<--user
+deactivate user
 control<<--Usuarios
 deactivate Usuarios
 boundary<<--control
@@ -18,51 +24,18 @@ deactivate boundary
 Administrador->boundary: enviar(Datos)
 activate boundary
 boundary->control:Gestionarcuenta(datos)
+
 activate control
 control->Usuarios:modificar(Datos)
+activate Usuarios
+Usuarios->user:modificar(Datos)
+activate user
+Usuarios<<--user
+deactivate user
 control<<--Usuarios
 deactivate Usuarios
 boundary<<--control
 deactivate control
 Administrador<<--boundary
 deactivate boundary
-
-opt consultar cuenta
-    Administrador->boundary: conusltarCuenta(cuenta)
-    activate boundary
-    boundary->control:conusltarCuenta(cuenta)
-    activate control
-    control->Usuarios:datos=ConsultarCuenta(cuenta)
-    activate Usuarios
-    control<<--Usuarios
-    deactivate Usuarios
-    boundary <- control:mostarDatos(datos)
-    activate boundary
-    boundary-->>control
-    deactivate boundary
-    deactivate control
-    deactivate boundary
-end
-
-
-opt eliminar Cuenta
-    Administrador->boundary: EliminarCuenta(cuenta)
-    activate boundary
-    boundary->control:EliminarCuenta(cuenta)
-    activate control
-    boundary<-control:ConfirmarEliminar()
-    activate boundary
-    boundary-->>control
-    deactivate boundary
-    control->Usuarios:Eliminar(cuenta)
-    activate Usuarios
-    control<<--Usuarios
-    deactivate Usuarios
-    boundary <<-- control
-    deactivate control
-    Administrador<<--boundary
-    deactivate boundary
-end
-
-
 @enduml

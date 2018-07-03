@@ -2,8 +2,8 @@
 @startuml teams
 
 package pkj <<Frame>> {
-  class index
-  class store <<Vuex>>
+  class App
+
   package Firebase #ff9801{
     class  Firebase.Firestore
     class  Firebase.Auth
@@ -11,30 +11,51 @@ package pkj <<Frame>> {
     }
 
   package components #41b883{
-    class lista
-    class helloworld
-    class listausuarios
-    class listapremios
-    class listaInsignias
-    class EquiposUsuario
-    class EquiposUsuario
+    class Navbar
     class Canvasmap
-
+    class EquiposUsuario
+    class GestionEquipo
+    class HelloWorld
+    class Info
+    class ListaInsignias
+    class ListaLogros
+    class ListaMisiones
+    class ListaPremios
+    class ListaUsuarios
+    class Login
+    class ModificarPerfil
+    class PremiosUsuario
+    class Ranking
+    class SignUp
+    class UserManagement
     }
-  package store #41b883{
-    class  store.User
+  package store <<Vuex>> #41b883{
+    class  store.User{
+      id:String
+      name:String
+      email:String
+      photoUrl:String
+      nivel:int
+      puntos:int 
+      rol:String 
+      getUser()
+      updateUser()
+      clearUser()
+    }
   }  
-  package router #41b883{
+  package router <<router>> #41b883{
     class  router.Index
   }
-  index -right-> router.Index
-  router -right-->components
+  App -right-> router.Index
+  router.Index -right-->components
   router.Index -down-> store
   components -down-> store
-  components ---> Firebase.Firestore
-  components ---> Firebase.Storage 
-  store ---> Firebase.Auth
-  Canvasmap--*helloworld
+  components --> Firebase.Firestore
+  components --> Firebase.Storage 
+  store --> Firebase.Auth
+  Canvasmap--o HelloWorld
+ 
+
   }
 
 hide empty members   

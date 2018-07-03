@@ -15,6 +15,6 @@ database "Firebase" as firebase {
         component "Firebase auth" as auth
     }
 }
-browser-down-app
-app-down-firebase
+browser-down--app
+app-down--firebase
 @enduml
