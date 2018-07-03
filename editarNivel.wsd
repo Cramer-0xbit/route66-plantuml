@@ -1,0 +1,23 @@
+@startuml Editar nivel
+actor "Administrador" as Administrador
+boundary boundary
+control control
+collections NIveles as Usuarios 
+participant "nivel:Nivel" as user
+Administrador->boundary: editarNivel(nivel,datos)
+activate boundary
+boundary->control:editarNivel(nivel,datos)
+activate control
+control->Usuarios
+activate Usuarios
+Usuarios->user:editarNivel(datos)
+activate user
+Usuarios<<-user
+deactivate user
+control<<--Usuarios
+deactivate Usuarios
+boundary<<--control
+deactivate control
+
+deactivate boundary
+@enduml

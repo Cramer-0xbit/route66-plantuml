@@ -1,0 +1,19 @@
+@startuml Eliminar nivel
+actor "Administrador" as Administrador
+boundary boundary
+control control
+collections NIveles as Usuarios 
+participant "nivel:Nivel" as user
+Administrador->boundary: eliminarNivel()
+activate boundary
+boundary->control:eliminarNivel(nivel)
+activate control
+control->Usuarios
+activate Usuarios
+Usuarios ->x user
+control<<--Usuarios
+deactivate Usuarios
+boundary<<--control
+deactivate control
+deactivate boundary
+@enduml

@@ -1,0 +1,19 @@
+@startuml Editar usuario
+actor "Administrador" as Administrador
+boundary boundary
+control control
+collections Insignias as Usuarios 
+participant ":Insignia" as user
+Administrador->boundary: crearInsignia(datos)
+activate boundary
+boundary->control:crearInsignia(datos)
+activate control
+control->Usuarios:crearInsignia(datos)
+activate Usuarios
+create user
+Usuarios->user: <create>>
+control<<--Usuarios
+deactivate Usuarios
+boundary<<--control
+deactivate control
+@enduml

@@ -1,4 +1,4 @@
-@startuml
+@startuml despliegue
 node "Ordenador" as Ordenador <<Client Device>>{
     component "navegador Web"  as browser   
 }

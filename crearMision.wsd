@@ -1,0 +1,24 @@
+@startuml crear Mision
+actor "Administrador" as Administrador
+boundary boundary
+control control
+collections Niveles as Usuarios 
+participant ":Nivel" as user
+collections Misiones as missions 
+participant ":Misión" as mission
+Administrador->boundary: newMisión(datos)
+activate boundary
+boundary->control:newMisión(datos)
+activate control
+control->Usuarios:newMisión(datos)
+activate Usuarios
+Usuarios->user:newMisión(datos)
+user->missions:newMisión(datos)
+create mission
+missions-> mission
+control<<--Usuarios
+deactivate Usuarios
+boundary<<--control
+deactivate control
+deactivate boundary
+@enduml

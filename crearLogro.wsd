@@ -1,0 +1,19 @@
+@startuml crear Logro
+actor "Administrador" as Administrador
+boundary boundary
+control control
+collections Logros as Usuarios 
+participant ":Logro" as user
+Administrador->boundary: crearLogro(datos)
+activate boundary
+boundary->control:crearLogro(datos)
+activate control
+control->Usuarios:crearLogro(datos)
+activate Usuarios
+create user
+Usuarios->user: <create>>
+control<<--Usuarios
+deactivate Usuarios
+boundary<<--control
+deactivate control
+@enduml

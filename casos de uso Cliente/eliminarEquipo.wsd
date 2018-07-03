@@ -1,0 +1,17 @@
+@startuml Consultar equipo
+actor "Cliente" as Client
+boundary boundary
+control control
+collections Equipos as teams 
+participant ":Equipo" as team
+Client->boundary :deleteTeam(team)
+activate boundary
+boundary -> control 
+activate control
+control -> teams:deleteTeam()
+activate teams
+teams ->x team
+deactivate teams
+deactivate control
+deactivate boundary
+@enduml

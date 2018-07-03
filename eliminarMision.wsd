@@ -1,0 +1,30 @@
+@startuml eliminar Mision
+actor "Administrador" as Administrador
+boundary boundary
+control control
+collections Niveles as Usuarios 
+participant ":Nivel" as user
+collections Misiones as missions 
+participant ":Misión" as mission
+Administrador->boundary: eliminarMission()
+activate boundary
+boundary->control:eliminarMission(nivel,mision)
+activate control
+control->Usuarios
+activate Usuarios
+Usuarios->user
+activate user
+user->missions:eliminarMission(mision)
+activate missions
+missions->x mission:eliminar()
+
+user<<--missions
+deactivate missions
+Usuarios<<--user
+deactivate user
+control<<--Usuarios
+deactivate Usuarios
+boundary<<--control
+deactivate control
+deactivate boundary
+@enduml

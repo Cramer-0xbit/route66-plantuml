@@ -1,0 +1,32 @@
+@startuml editar Mision
+actor "Administrador" as Administrador
+boundary boundary
+control control
+collections Niveles as Usuarios 
+participant ":Nivel" as user
+collections Misiones as missions 
+participant ":Misión" as mission
+Administrador->boundary: editarMission()
+activate boundary
+boundary->control:editarMission(nivel,mision,datos)
+activate control
+control->Usuarios
+activate Usuarios
+Usuarios->user
+activate user
+user->missions:editarMission(mision,datos)
+activate missions
+missions-> mission:editarMission(datos)
+activate mission
+missions <<--mission 
+deactivate mission
+user<<--missions
+deactivate missions
+Usuarios<<--user
+deactivate user
+control<<--Usuarios
+deactivate Usuarios
+boundary<<--control
+deactivate control
+deactivate boundary
+@enduml
