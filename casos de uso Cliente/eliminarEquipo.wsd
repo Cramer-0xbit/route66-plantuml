@@ -1,4 +1,4 @@
-@startuml Consultar equipo
+@startuml Eliminar equipo
 actor "Cliente" as Client
 boundary boundary
 control control

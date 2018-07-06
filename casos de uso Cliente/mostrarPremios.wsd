@@ -8,10 +8,10 @@ Client->boundary :getPrizes(user)
 activate boundary
 boundary->control
 activate control
-control->prizes:getTeams(user)
+control->prizes:getPrizes(user)
 activate prizes
 loop if user in
-  prizes->prize: getTeam()
+  prizes->prize: getPrize()
   activate prize
   prizes<<--prize
   deactivate prize
@@ -21,12 +21,12 @@ deactivate prizes
 boundary<<-- control
 deactivate control
 
-Client->boundary :getTeam(team)
+Client->boundary :getPrize(price)
 boundary -> control 
 activate control
-control -> prizes:getTeam(team)
+control -> prizes:getPrize(price)
 activate prizes
-prizes -> prize:getTeam()
+prizes -> prize:getPrize()
 activate prize
 deactivate prize
 deactivate prizes

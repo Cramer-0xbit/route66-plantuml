@@ -1,4 +1,4 @@
-@startuml Consultar equipo
+@startuml Salir del equipo
 actor "Cliente" as Client
 boundary boundary
 control control
@@ -10,9 +10,7 @@ boundary -> control
 activate control
 control -> teams:salir(equipo)
 activate teams
-create team
 teams -> team:salir()
-
 deactivate teams
 deactivate control
 deactivate boundary
