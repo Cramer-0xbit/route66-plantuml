@@ -1,5 +1,5 @@
 
-@startuml use cases
+@startuml use cases usuario
 left to right direction
 skinparam packageStyle rectangle
 :Usuario: as user
@@ -13,4 +13,7 @@ user --> (Cerrar sesión)
 user --> (registrarse)
 user --> (Mostrar ranking)
 user --> (modificar perfil)
+user --> (crear equipo)
+user --> (editar equipo)
+user --> (eliminar equipo)
 @enduml

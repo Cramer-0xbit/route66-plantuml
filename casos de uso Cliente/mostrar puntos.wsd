@@ -1,0 +1,15 @@
+@startuml mostrar puntos
+actor "Usuario" as Client
+boundary boundary
+control control
+participant ":Usuario" as user
+Client->boundary :getPoints()
+activate boundary
+boundary -> control 
+activate control
+control-> user :getPoints()
+activate user
+deactivate user
+deactivate control
+deactivate boundary
+@enduml

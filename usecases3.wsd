@@ -1,4 +1,4 @@
-@startuml use cases
+@startuml use cases cliente
 left to right direction
 skinparam packageStyle rectangle
 :Usuario: as user
@@ -8,9 +8,6 @@ user<|--client
 user<|- admin
 rectangle route66 {
 client --> (consultar equipo)
-client --> (crear equipo)
-client --> (editar equipo)
-client --> (eliminar equipo)
 client --> (invitar a equipo)
 client --> (eliminar de un equipo)
 client --> (salir de un equipo)

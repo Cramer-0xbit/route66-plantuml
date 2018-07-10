@@ -1,4 +1,4 @@
-@startuml use cases
+@startuml use cases administrador
 left to right direction
 skinparam packageStyle rectangle
 :Usuario: as user

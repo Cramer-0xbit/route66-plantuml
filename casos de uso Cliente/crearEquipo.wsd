@@ -1,5 +1,5 @@
 @startuml Crear Equipo
-actor "Cliente" as Client
+actor "Usuario" as Client
 boundary boundary
 control control
 collections Equipos as teams 

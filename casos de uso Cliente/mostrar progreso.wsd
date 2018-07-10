@@ -1,0 +1,19 @@
+@startuml mostrar progreso
+actor "Usuario" as Client
+boundary boundary
+control control
+participant ":User" as user
+participant ":Map" as map
+Client->boundary :getProgress()
+activate boundary
+boundary -> control 
+activate control
+control->user :getLevel()
+activate user
+deactivate user
+control-> map :getMap()
+activate map
+deactivate map
+deactivate control
+deactivate boundary
+@enduml

@@ -1,17 +1,16 @@
-@startuml Editar usuario
+@startuml Editar Premio
 actor "Administrador" as Administrador
 boundary boundary
 control control
 collections Premios as Usuarios 
 participant ":Premio" as user
-Administrador->boundary: crearPremio(datos)
+Administrador->boundary: editarPremio(datos)
 activate boundary
-boundary->control:crearPremio(datos)
+boundary->control:editarPremio(datos)
 activate control
-control->Usuarios:crearPremio(datos)
+control->Usuarios:editarPremio(datos)
 activate Usuarios
-create user
-Usuarios->user: <create>>
+Usuarios->user
 control<<--Usuarios
 deactivate Usuarios
 boundary<<--control

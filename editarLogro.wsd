@@ -1,17 +1,16 @@
-@startuml crear Logro
+@startuml Editar Logro
 actor "Administrador" as Administrador
 boundary boundary
 control control
 collections Logros as Usuarios 
 participant ":Logro" as user
-Administrador->boundary: crearLogro(datos)
+Administrador->boundary: editarLogro(datos)
 activate boundary
-boundary->control:crearLogro(datos)
+boundary->control:editarLogro(datos)
 activate control
-control->Usuarios:crearLogro(datos)
+control->Usuarios:editarLogro(datos)
 activate Usuarios
-create user
-Usuarios->user: <create>>
+Usuarios->user
 control<<--Usuarios
 deactivate Usuarios
 boundary<<--control

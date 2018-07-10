@@ -1,17 +1,16 @@
-@startuml Crear Insignia
+@startuml Editar Insignia
 actor "Administrador" as Administrador
 boundary boundary
 control control
 collections Insignias as Usuarios 
 participant ":Insignia" as user
-Administrador->boundary: crearInsignia(datos)
+Administrador->boundary: editarInsignia(datos)
 activate boundary
-boundary->control:crearInsignia(datos)
+boundary->control:editarInsignia(datos)
 activate control
-control->Usuarios:crearInsignia(datos)
+control->Usuarios:editarInsignia(datos)
 activate Usuarios
-create user
-Usuarios->user: <create>>
+Usuarios->user
 control<<--Usuarios
 deactivate Usuarios
 boundary<<--control

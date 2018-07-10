@@ -1,0 +1,37 @@
+@startuml mostrar Premios
+actor "Cliente" as Client
+boundary boundary
+control control
+collections Insignias as prizes 
+participant ":Insignia" as prize
+Client->boundary :getInsignias(user)
+activate boundary
+boundary->control
+activate control
+control->prizes:getInsignias(user)
+activate prizes
+loop if user in
+  prizes->prize: getInsignia()
+  activate prize
+  prizes<<--prize
+  deactivate prize
+end
+control<<--prizes
+deactivate prizes
+boundary<<-- control
+deactivate control
+
+Client->boundary :getInsignia(insignia)
+boundary -> control 
+activate control
+control -> prizes:getInsignia(insignia)
+activate prizes
+prizes -> prize:getInsignia()
+activate prize
+deactivate prize
+deactivate prizes
+deactivate control
+deactivate boundary
+
+
+@enduml
